@@ -1,0 +1,41 @@
+{
+  "name": "flash-cards-react",
+  "version": "1.0.0",
+  "description": "Project to display flashcards",
+  "main": "index.js",
+  "scripts": {
+    "start:server": "nodemon ./server/app",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:api": "mocha --compilers js:babel-core/register --recursive ./server/test",
+    "test:api_watch": "npm run test:api --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/JonnyPickard/flash-cards-react.git"
+  },
+  "author": "Jonny Pickard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonnyPickard/flash-cards-react/issues"
+  },
+  "homepage": "https://github.com/JonnyPickard/flash-cards-react#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.1",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.3.0",
+    "mocha": "^3.5.0",
+    "mongodb": "^2.2.31",
+    "supertest": "^3.0.0"
+  },
+  "dependencies": {
+    "koa": "^2.3.0",
+    "koa-router": "^7.2.1",
+    "mongoose": "^4.11.7",
+    "nodemon": "^1.11.0"
+  }
+}
