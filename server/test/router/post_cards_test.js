@@ -13,7 +13,10 @@ describe('POST /cards', () => {
     const testCard = {
       title: 'testTitle',
       understoodStatus: 'known',
-      content: 'testContent',
+      content: {
+        question: 'testQuestion',
+        answer: 'testAnswer',
+      },
       type: 'general',
     };
 
@@ -38,7 +41,8 @@ describe('POST /cards', () => {
 
       expect(body.title).to.equal('testTitle');
       expect(body.understoodStatus).to.equal('known');
-      expect(body.content).to.equal('testContent');
+      expect(body.content.question).to.equal('testQuestion');
+      expect(body.content.answer).to.equal('testAnswer');
       expect(body.type).to.equal('general');
     });
 
