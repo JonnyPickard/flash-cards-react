@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const mongoUrl = 'mongodb://localhost:27017/flashcards';
+const mongoUrl = process.env.MONGODB_URI;
 
 async function cleanDatabase() {
   const db = await MongoClient.connect(mongoUrl);

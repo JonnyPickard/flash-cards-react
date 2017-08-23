@@ -1,8 +1,12 @@
 import request from 'supertest';
 import { expect } from 'chai';
+import mongoose from 'mongoose';
 
 import app from '../../app';
 import { cleanDatabase, getOneCardByTitle } from '../helpers';
+
+mongoose.models = {};
+mongoose.modelSchemas = {};
 
 describe('POST /cards', () => {
   describe('On Success', () => {

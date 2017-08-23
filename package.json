@@ -6,7 +6,8 @@
   "scripts": {
     "start:server": "nodemon ./server/app",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:api": "mocha --compilers js:babel-core/register --recursive ./server/test"
+    "test:api": "NODE_ENV=test mocha --compilers js:babel-core/register -r ./server/test/test_helper --recursive ./server/test",
+    "test:api:watch": "npm run test:api -- --watch"
   },
   "repository": {
     "type": "git",
