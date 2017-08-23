@@ -7,7 +7,7 @@ mongoose.models = {};
 mongoose.modelSchemas = {};
 
 describe('GET /private/ping', () => {
-  it('returns a 200 status code', async () => {
+  it('200 response', async () => {
     await request(app)
       .get('/private/ping')
       .expect(200);

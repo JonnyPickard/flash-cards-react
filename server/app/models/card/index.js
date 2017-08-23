@@ -4,11 +4,21 @@ const cardSchema = require('./schema');
 
 const Card = mongoose.model('Card', cardSchema, 'cards');
 
-const createOne = async (cardObject) => {
+const createOneCard = async (cardObject) => {
   const card = await new Card(cardObject)
     .save();
 
   return card;
 };
 
-module.exports = { createOne };
+const getManyCards = async () => {
+  const cards = await Card
+    .find()
+    .sort({ created_at: 1 })
+    .limit(40)
+    .exec();
+
+  return cards;
+};
+
+module.exports = { createOneCard, getManyCards };

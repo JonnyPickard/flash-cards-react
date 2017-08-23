@@ -24,6 +24,13 @@ describe('POST /cards', () => {
       await cleanDatabase();
     });
 
+    it('200 response', async () => {
+      await request(app)
+        .post('/cards')
+        .send(testCard)
+        .expect(200);
+    });
+
     it('saves a card in the db', async () => {
       await request(app)
         .post('/cards')
@@ -45,27 +52,20 @@ describe('POST /cards', () => {
       expect(body.content.answer).to.equal('testAnswer');
       expect(body.type).to.equal('general');
     });
-
-    it('responds status 200', async () => {
-      await request(app)
-        .post('/cards')
-        .send(testCard)
-        .expect(200);
-    });
   });
 
   describe('On Failure', () => {
-    it('does not create a post', async () => {
-      await request(app)
-        .post('/cards')
-        .send({});
-    });
-
-    it('responds status 400', async () => {
+    it('400 response', async () => {
       await request(app)
         .post('/cards')
         .send({})
         .expect(400);
+    });
+
+    it('does not create a post', async () => {
+      await request(app)
+        .post('/cards')
+        .send({});
     });
   });
 });
