@@ -24,6 +24,7 @@ describe('GET /cards', () => {
         .expect(200);
     });
 
+    // NOTE: sometimes helper method saves so fast created_at doesnt match index :/
     it('retrieves multiple cards in order of created_at', async () => {
       const { body } = await request(app)
         .get('/cards');

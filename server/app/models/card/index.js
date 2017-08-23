@@ -21,4 +21,15 @@ const getManyCards = async () => {
   return cards;
 };
 
-module.exports = { createOneCard, getManyCards };
+const getOneCardById = async (_id) => {
+  const card = await Card
+    .find({ _id })
+    .limit(1)
+    .exec();
+
+  if (!card[0]) throw new Error('No card found');
+
+  return card[0];
+};
+
+module.exports = { createOneCard, getManyCards, getOneCardById };

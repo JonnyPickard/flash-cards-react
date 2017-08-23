@@ -1,6 +1,6 @@
 const router = require('koa-router')();
 
-const { createOneCard, getManyCards } = require('../models/card');
+const { createOneCard, getManyCards, getOneCardById } = require('../models/card');
 
 router
   .get('/private/ping', async (ctx) => {
@@ -13,6 +13,15 @@ router
       ctx.response.body = cards;
     } catch (err) {
       ctx.status = 400;
+    }
+  })
+
+  .get('/cards/:id', async (ctx) => {
+    try {
+      const card = await getOneCardById(ctx.params.id);
+      ctx.response.body = card;
+    } catch (err) {
+      ctx.status = 404;
     }
   })
 
