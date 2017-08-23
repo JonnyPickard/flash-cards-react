@@ -1,12 +1,8 @@
 import request from 'supertest';
 import { expect } from 'chai';
-import mongoose from 'mongoose';
 
 import app from '../../app';
 import { cleanDatabase, createManyCards } from '../helpers';
-
-mongoose.models = {};
-mongoose.modelSchemas = {};
 
 describe('GET /cards', () => {
   describe('On Success', () => {
@@ -25,6 +21,7 @@ describe('GET /cards', () => {
     });
 
     // NOTE: sometimes helper method saves so fast created_at doesnt match index :/
+    // Will need changing if CI gets used
     it('retrieves multiple cards in order of created_at', async () => {
       const { body } = await request(app)
         .get('/cards');

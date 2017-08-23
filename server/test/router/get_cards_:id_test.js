@@ -1,12 +1,8 @@
 import request from 'supertest';
 import { expect } from 'chai';
-import mongoose from 'mongoose';
 
 import app from '../../app';
 import { cleanDatabase, createOneCard } from '../helpers';
-
-mongoose.models = {};
-mongoose.modelSchemas = {};
 
 describe('GET /cards/:id', () => {
   let cardId;
