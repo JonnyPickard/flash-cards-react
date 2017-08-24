@@ -1,9 +1,9 @@
 const { MongoClient } = require('mongodb');
 
-const mongoUrl = process.env.MONGODB_URI;
+const { MONGODB_URI } = process.env;
 
 async function getCardByTitle(title) {
-  const db = await MongoClient.connect(mongoUrl);
+  const db = await MongoClient.connect(MONGODB_URI);
   const card = await db.collection('cards').findOne({ title });
   return card;
 }

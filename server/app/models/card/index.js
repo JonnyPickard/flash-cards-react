@@ -32,4 +32,21 @@ const getOneCardById = async (_id) => {
   return card[0];
 };
 
-module.exports = { createOneCard, getManyCards, getOneCardById };
+const deleteOneCardById = async (_id) => {
+  const card = await Card
+    .find({ _id })
+    .limit(1)
+    .exec();
+
+  await Card
+    .find({ _id })
+    .limit(1)
+    .remove()
+    .exec();
+
+  if (!card[0]) throw new Error('No card found');
+
+  return card[0];
+};
+
+module.exports = { createOneCard, getManyCards, getOneCardById, deleteOneCardById };
